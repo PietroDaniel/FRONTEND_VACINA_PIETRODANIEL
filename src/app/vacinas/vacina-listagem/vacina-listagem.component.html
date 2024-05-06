@@ -1,0 +1,23 @@
+<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>País de Origem</th>
+				<th>Pesquisador Responsável</th>
+				<th>Data de início da Pesquisa</th>
+				<th>Estágio</th>
+				<th>Media</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let vacina of vacinas">
+				<td> {{ vacina.nome }}</td>
+				<td> {{ vacina.paisOrigem }}</td>
+				<td> {{ vacina.pesquisadorResponsavel }}</td>
+				<td> {{ vacina.dataInicioPesquisa }}</td>
+				<td> {{ vacina.estagio }}</td>
+				<td> {{ vacina.media }}</td>
+			</tr>
+		</table>
+	</div>
