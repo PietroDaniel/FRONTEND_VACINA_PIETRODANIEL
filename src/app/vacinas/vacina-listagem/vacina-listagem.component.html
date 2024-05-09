@@ -1,3 +1,54 @@
+<div class="container">
+  <h3 class="alert alert-success">Vacinas</h3>
+  <div class="card">
+    <div class="class-header bg-info">
+    <h5>Filtros</h5>
+  </div>
+<div class="card-body">
+  <form>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="nome">Nome da Vacina:</label>
+        <input type="text" id="nome" class="form-control" name="nome" [(ngModel)]="seletor.nomeVacina">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="nomePais">País de Origem da Vacina:</label>
+        <input type="text" id="nomePais" class="form-control" name="nomePais" [(ngModel)]="seletor.nomePais">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="pesquisadorResponsavel">Pesquisador responsável:</label>
+        <input type="text" id="nomePesquisador" class="form-control" name="nomePesquisador" [(ngModel)]="seletor.nomePesquisador">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="dataInicioPesquisa">Data de início da Pesquisa:</label>
+        <input type="date" id="dataInicioPesquisa" class="form-control" name="dataInicioPesquisa" [(ngModel)]="seletor.dataInicioVacina">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label for="btnPesquisar">&nbsp;</label>
+      <button type="button" class="form-control btn btn-warning" name="btnPesquisar"
+      (click)="pesquisar()">
+      <i class="bi bi-trash"></i>Pesquisar
+      </button>
+    </div>
+    <div class="col-md-3">
+      <label for="btnLimpar">&nbsp;</label>
+      <button type="button" class="form-control btn btn-warning" name="btnLimpar"
+      (click)="limpar()">
+      <i class="bi bi-trash"></i>Limpar
+      </button>
+    </div>
+  </form>
+</div>
+</div>
+<br><br>
+
 <div>
 	<table class="table table-striped">
 		<thead>
@@ -7,15 +58,15 @@
 				<th>Pesquisador Responsável</th>
 				<th>Data de início da Pesquisa</th>
 				<th>Estágio</th>
-				<th>Media</th>
+				<th>Média</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="let vacina of vacinas">
 				<td> {{ vacina.nome }}</td>
-				<td> {{ vacina.paisOrigem }}</td>
-				<td> {{ vacina.pesquisadorResponsavel }}</td>
-				<td> {{ vacina.dataInicioPesquisa }}</td>
+				<td> {{ vacina.paisOrigem.nome }}</td>
+				<td> {{ vacina.pesquisadorResponsavel.nome }}</td>
+				<td> {{ vacina.dataInicioPesquisa | date : 'dd/MM/yyyy' }}</td>
 				<td> {{ vacina.estagio }}</td>
 				<td> {{ vacina.media }}</td>
 			</tr>

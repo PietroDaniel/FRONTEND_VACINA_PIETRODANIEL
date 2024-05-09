@@ -1,4 +1,3 @@
-import { Data } from "@angular/router";
 import { Vacina } from "./vacina";
 import { Pais } from "./pais";
 
@@ -7,7 +6,7 @@ export interface Pessoa {
   nome: string;
   cpf: number;
   sexo: string;
-  dataNascimento: Data;
+  dataNascimento: Date;
   pais: Pais;
   tipo: string;
   vacinacoes: Array<Vacina>;
