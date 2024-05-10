@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
   styleUrl: './vacina-detalhe.component.scss'
 })
 
-export class VacinaDetalheComponent implements OnInit{
+export class VacinaDetalheComponent implements OnInit {
   public vacina: Vacina = new Vacina();
   public paises: Array<Pais> = [];
   public pesquisadores: Array<Pessoa> = [];
@@ -26,101 +26,101 @@ export class VacinaDetalheComponent implements OnInit{
     private pessoaService: PessoasService,
     private route: ActivatedRoute,
     private router: Router
-    ) {}
+  ) { }
 
-    ngOnInit(): void {
-      this.consultarTodosPaises();
-      this.consultarPesquisadores();
-      this.route.params.subscribe((params) => {
-        this.idVacina = params['id'];
-        if (this.idVacina) {
-          this.consultarVacinaId();
-        }
-      });
-    }
-
-salvar(): void {
-  if (this.idVacina) {
-    this.editarVacina();
-  } else {
-    this.salvarNovaVacina();
+  ngOnInit(): void {
+    this.consultarTodosPaises();
+    this.consultarPesquisadores();
+    this.route.params.subscribe((params) => {
+      this.idVacina = params['id'];
+      if (this.idVacina) {
+        this.consultarVacinaId();
+      }
+    });
   }
-}
-private salvarNovaVacina(): void {
-  this.vacinasService.salvar(this.vacina).subscribe(
-    (resultado) => {
-      this.vacina = resultado;
-      Swal.fire({
-        icon: 'success',
-        text: 'Vacina salva com sucesso!',
-      });
-      this.voltar();
-    },
-    (erro) => {
-      Swal.fire({
-        icon: 'error',
-        text: 'Erro ao salvar nova vacina: ' + erro.error.mensagem,
-      });
-      console.error('Erro ao salvar nova vacina.');
-    }
-  );
-}
 
-private editarVacina(): void {
-  this.vacinasService.editar(this.vacina).subscribe(
-    (resposta) => {
-    Swal.fire('Vacina atualizada com sucesso!', '', 'success');
-    this.voltar();
-  },
-  (erro) => {
-    Swal.fire('Erro ao atualizar vacina: ' + erro.error.mensagem, 'error')
+  public salvar(): void {
+    if (this.idVacina) {
+      this.editarVacina();
+    } else {
+      this.salvarNovaVacina();
+    }
   }
-);
-}
 
-public consultarVacinaId(): void {
-  this.vacinasService.consultarVacinaID(this.idVacina).subscribe(
-    (vacina) => {
-      this.vacina = vacina;
-    },
-    (erro) => {
-      Swal.fire(
-        'Erro ao editar vacina ' + this.vacina.nome + '.',
-        erro,
-        'error'
-      );
-    }
-  );
-}
+  private salvarNovaVacina(): void {
+    this.vacinasService.salvar(this.vacina).subscribe(
+      (resultado) => {
+        this.vacina = resultado;
+        Swal.fire({
+          icon: 'success',
+          text: 'Vacina salva com sucesso!',
+        });
+        this.voltar();
+      },
+      (erro) => {
+        Swal.fire({
+          icon: 'error',
+          text: 'Erro ao salvar nova vacina: ' + erro.error.mensagem,
+        });
+        console.error('Erro ao salvar nova vacina.');
+      }
+    );
+  }
 
-public consultarTodosPaises(): void {
-  this.paisService.consultarTodosPaises().subscribe(
-    (resultado) => {
-      this.paises = resultado;
-    },
-    (erro) => {
-      console.error('Erro ao consultar todos os países.');
-    }
-  );
-}
+  private editarVacina(): void {
+    this.vacinasService.editar(this.vacina).subscribe(
+      (resposta) => {
+        Swal.fire('Vacina atualizada com sucesso!', '', 'success');
+        this.voltar();
+      },
+      (erro) => {
+        Swal.fire('Erro ao atualizar vacina: ' + erro.error.mensagem, 'error');
+      }
+    );
+  }
 
-public consultarPesquisadores(): void {
-  this.pessoaService.consultarPesquisadores().subscribe(
-    (resultado) => {
-      this.pesquisadores = resultado;
-    },
-    (erro) => {
-      console.error('Erro ao consultar todos os pesquisadores.');
-    }
-  );
-}
+  public consultarVacinaId(): void {
+    this.vacinasService.consultarVacinaID(this.idVacina).subscribe(
+      (vacina) => {
+        this.vacina = vacina;
+      },
+      (erro) => {
+        Swal.fire(
+          'Erro ao editar vacina ' + this.vacina.nome + '.',
+          erro,
+          'error'
+        );
+      }
+    );
+  }
 
-public voltar(): void {
-  this.router.navigate(['/vacina/']);
-}
+  public consultarTodosPaises(): void {
+    this.paisService.consultarTodosPaises().subscribe(
+      (resultado) => {
+        this.paises = resultado;
+      },
+      (erro) => {
+        console.error('Erro ao consultar todos os países.');
+      }
+    );
+  }
 
-public compareById(r1: any, r2: any) : boolean {
-  return r1 && r2 ? r1.id === r2.id : r1 === r2;
-}
+  public consultarPesquisadores(): void {
+    this.pessoaService.consultarPesquisadores().subscribe(
+      (resultado) => {
+        this.pesquisadores = resultado;
+      },
+      (erro) => {
+        console.error('Erro ao consultar todos os pesquisadores.');
+      }
+    );
+  }
 
+  public voltar(): void {
+    this.router.navigate(['/vacina/']);
+  }
+
+  public compareById(r1: any, r2: any): boolean {
+    return r1 && r2 ? r1.id === r2.id : r1 === r2;
+  }
 }

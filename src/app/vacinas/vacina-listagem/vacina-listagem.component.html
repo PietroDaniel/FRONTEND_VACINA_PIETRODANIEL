@@ -34,14 +34,14 @@
       <label for="btnPesquisar">&nbsp;</label>
       <button type="button" class="form-control btn btn-warning" name="btnPesquisar"
       (click)="pesquisar()">
-      <i class="bi bi-trash"></i>Pesquisar
+      <i class="bi bi-search"></i>   Pesquisar
       </button>
     </div>
     <div class="col-md-3">
       <label for="btnLimpar">&nbsp;</label>
       <button type="button" class="form-control btn btn-warning" name="btnLimpar"
       (click)="limpar()">
-      <i class="bi bi-trash"></i>Limpar
+      <i class="bi bi-trash"></i>   Limpar
       </button>
     </div>
   </form>
@@ -59,16 +59,28 @@
 				<th>Data de início da Pesquisa</th>
 				<th>Estágio</th>
 				<th>Média</th>
+        <th>Ações</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr *ngFor="let vacina of vacinas">
 				<td> {{ vacina.nome }}</td>
-				<td> {{ vacina.paisOrigem.nome }}</td>
-				<td> {{ vacina.pesquisadorResponsavel.nome }}</td>
-				<td> {{ vacina.dataInicioPesquisa | date : 'dd/MM/yyyy' }}</td>
-				<td> {{ vacina.estagio }}</td>
-				<td> {{ vacina.media }}</td>
+				<td class ="text-center">{{ vacina.paisOrigem.nome }}</td>
+				<td class ="text-center">{{ vacina.pesquisadorResponsavel.nome }}</td>
+				<td class ="text-center">{{ vacina.dataInicioPesquisa | date : 'dd/MM/yyyy' }}</td>
+				<td class ="text-center">{{ vacina.estagio }}</td>
+				<td class ="text-center">{{ vacina.media }}</td>
+          <button class="btn btin-xs btin-info mr12"
+                  (click)="editarVacina(vacina.id)">
+                <i class="bi bi-pencil"></i> Editar
+                </button>
+                &nbsp;
+                <button class="btn btin-xs btn-danger"
+                        (click)="excluir(vacina)">
+                      <i class="bi bi-x"></i>Excluir
+                      </button>
+                &nbsp;
+        <td></td>
 			</tr>
 		</table>
 	</div>
