@@ -19,7 +19,7 @@ export class VacinasService {
   }
 
   consultarVacinaID(idVacina: number): Observable<Vacina> {
-    return this.httpClient.get<Vacina>(this.API + '/consultar/' + idVacina )
+    return this.httpClient.get<Vacina>(this.API + '/' + idVacina )
   }
 
   listarComSeletor(seletor: VacinaSeletor) : Observable<Array<Vacina>> {
@@ -27,11 +27,11 @@ export class VacinasService {
   }
 
   excluir (vacinaId: number): Observable<boolean> {
-    return this.httpClient.delete<boolean>(this.API + '/excluir/' + vacinaId)
+    return this.httpClient.delete<boolean>(this.API + '/' + vacinaId)
   }
 
   salvar(novaVacina: Vacina): Observable<Vacina> {
-    return this.httpClient.post<Vacina>(this.API + '', novaVacina)
+    return this.httpClient.post<Vacina>(this.API + '/salvar', novaVacina)
   }
 
   editar(vacinaEditada: Vacina): Observable<boolean>{

@@ -70,17 +70,17 @@
 				<td class ="text-center">{{ vacina.dataInicioPesquisa | date : 'dd/MM/yyyy' }}</td>
 				<td class ="text-center">{{ vacina.estagio }}</td>
 				<td class ="text-center">{{ vacina.media }}</td>
-          <button class="btn btin-xs btin-info mr12"
+        <td><button class="btn btn-xs btn-info mr12"
                   (click)="editarVacina(vacina.id)">
                 <i class="bi bi-pencil"></i> Editar
                 </button>
                 &nbsp;
-                <button class="btn btin-xs btn-danger"
+                <button class="btn btn-xs btn-danger"
                         (click)="excluir(vacina)">
                       <i class="bi bi-x"></i>Excluir
                       </button>
                 &nbsp;
-        <td></td>
+        </td>
 			</tr>
 		</table>
 	</div>

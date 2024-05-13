@@ -4,7 +4,7 @@ import { VacinaListagemComponent } from './vacina-listagem/vacina-listagem.compo
 import { VacinaDetalheComponent } from './vacina-detalhe/vacina-detalhe.component';
 
 const routes: Routes = [
-{ path: "", component: VacinaListagemComponent},
+{ path: '', component: VacinaListagemComponent},
 { path: 'detalhe', component: VacinaDetalheComponent},
 { path: 'detalhe/:id', component: VacinaDetalheComponent}
 ];

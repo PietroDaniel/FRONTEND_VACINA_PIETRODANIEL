@@ -7,7 +7,7 @@ export class Pessoa {
   cpf: number;
   sexo: string;
   dataNascimento: Date;
-  pais: Pais;
+  paisOrigem: Pais;
   tipo: string;
   vacinacoes: Array<Vacina>;
 }

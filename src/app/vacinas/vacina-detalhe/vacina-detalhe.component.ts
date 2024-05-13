@@ -117,7 +117,7 @@ export class VacinaDetalheComponent implements OnInit {
   }
 
   public voltar(): void {
-    this.router.navigate(['/vacina/']);
+    this.router.navigate(['/vacinas']);
   }
 
   public compareById(r1: any, r2: any): boolean {

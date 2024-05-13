@@ -72,6 +72,6 @@ export class VacinaListagemComponent implements OnInit {
   }
 
   public editarVacina(idVacinaSelecionada: number) {
-    this.router.navigate(['/vacinas/detalhe', idVacinaSelecionada]);
+    this.router.navigate(['/vacinas/detalhe/' + idVacinaSelecionada]);
   }
 }

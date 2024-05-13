@@ -11,12 +11,24 @@ export class PessoasService {
 
   constructor(private httpClient: HttpClient) { }
 
-  listarTodas(): Observable<Array<Pessoa>>{
-    return this.httpClient.get<Array<Pessoa>>(this.API + '/todas');
+  salvar(novaPessoa: Pessoa): Observable<any> {
+    return this.httpClient.post(this.API, novaPessoa)
   }
 
-  salvar(novaPessoa: Pessoa): Observable<any> {
-    return this.httpClient.post(this.API + '/salvar', novaPessoa)
+  atualizar(pessoaEditada: Pessoa): Observable<any>{
+    return this.httpClient.put(this.API, pessoaEditada)
+  }
+
+  excluir (pessoaId: number): Observable<boolean> {
+    return this.httpClient.delete<boolean>(this.API + '/' + pessoaId)
+  }
+
+  consultarPessoaId(idPessoa: number): Observable<Pessoa> {
+    return this.httpClient.get<Pessoa>(this.API + '/' + idPessoa)
+  }
+  
+  listarTodasAsPessoas(): Observable<Array<Pessoa>>{
+    return this.httpClient.get<Array<Pessoa>>(this.API + '/todas');
   }
 
   consultarPesquisadores(): Observable<Array<Pessoa>>{
